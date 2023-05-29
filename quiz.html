@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <!-- questionfont -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200&display=swap" rel="stylesheet">
+    <title>Quizzery - HTML QUIZ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <button class="button" onclick="document.getElementById('main').style.display = 'block';
+    this.style.display = 'none'">Start Quiz</button>
+    <div class="mcqContainer" id="main">
+        <div class="header">
+            <div class="h1">
+                <h1>HTML QUIZ</h1>
+            </div>
+            <div class="questionsCount">
+                <p><span id="noOfQuestions">1</span>/10</p>
+            </div>
+        </div>
+        <div class="mainTest">
+            <div class="question">
+                <button id="questionNumber">1</button>
+                <h1 id="quest">
+                    <!-- will fetch questions from JavaScript -->
+                </h1>
+            </div>
+            <div class="optionslist">
+                <div class="row">
+                    <input type="radio" class="answer" name="app" value="0">
+                    <p id="ans1">
+                        <!-- will fetch options from JavaScript -->
+                        option 1
+                    </p>
+                </div>
+                <div class="row">
+                    <input type="radio" class="answer" name="app" value="1">
+                    <p id="ans2">
+                        <!-- will fetch options from JavaScript -->
+                        option 2
+                    </p>
+                </div>
+                <div class="row">
+                    <input type="radio" class="answer" name="app" value="2">
+                    <p id="ans3">
+                        <!-- will fetch options from JavaScript -->
+                        option 3
+                    </p>
+                </div>
+                <div class="row">
+                    <input type="radio" class="answer" name="app" value="3">
+                    <p id="ans4">
+                        <!-- will fetch options from JavaScript -->
+                        option 4
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="btn">
+            <button class="next" id="nextBtn" disabled>Next</button>
+        </div>
+    </div>
+    <div id="result">
+        <p id="per"></p>
+        <p id="grade"></p>
+        <p id="marks"></p>
+        <a href="index.html">
+            <button>Log Out</button>
+        </a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

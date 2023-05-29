@@ -1,0 +1,446 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+@keyframes animatedBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    background: linear-gradient(45deg, #00c3ff, #3a8fd5, #3a7bd5, #00d2ff);
+    background-size: 200% 200%;
+    animation: animatedBackground 10s ease infinite;
+}
+
+
+body {
+    background-color: #007bff;
+    box-shadow: 0 0 10px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    position: relative;
+}
+
+.mcqContainer {
+    background-color: rgba(255, 255, 255, 0.09);
+    border-radius: 2px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 600px;
+    display: none;
+}
+
+.header {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 1s ease-in-out;
+    background-color: rgba(238, 242, 255, 0.374);
+    padding: 20px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.h1 {
+    font-size: 14px;
+    font-weight: normal;
+    color: rgb(255, 255, 255);
+}
+
+.questionsCount {
+    font-size: 12px;
+    color: #f3f3f3;
+}
+
+
+.question {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: fadeIn 1s ease-in-out;
+    padding: 10px;
+}
+
+.mainTest {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 40px 10px;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+}
+
+#questionNumber {
+    font-weight: bold;
+    border: 2px solid #004a9a69;
+    background-color: rgba(238, 242, 255, 0.374);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    width: 100px;
+}
+
+#quest {
+    font-size: 22px;
+    animation: slideIn 1s ease-in-out;
+    color: whitesmoke;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+
+.optionslist {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.row {
+    position: relative;
+    animation: slideIn 1s ease-in-out;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 100;
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    color: #fff;
+    padding: 10px 10px 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+input[type="radio"] {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #fdfdfd;
+    border-radius: 10%;
+    outline: none;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: all 1s ease;
+}
+
+input[type="radio"]:checked {
+    background-color: #0052af;
+    border: 1px solid #fdfdfd;
+    border-radius: 50%;
+}
+
+.row::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: #00000007;
+    transform: translateX(-105%) skew(-35deg);
+    transition: transform 0.5s ease-in-out;
+}
+
+.row:hover::before {
+    transform: translateX(0) skew(0deg);
+}
+
+
+.btn {
+    text-align: right;
+    padding: 40px;
+    width: 100%;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.next {
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+    animation: slideIn 1s ease-in-out;
+    background-color: rgba(238, 242, 255, 0.374);
+    transition: .3s;
+    opacity: 1;
+}
+.next:disabled{
+    opacity: 0.1;
+}
+#result {
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(238, 245, 252, 0.3), rgba(213, 233, 247, 0.3));
+    width: 350px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    visibility: hidden;
+    top: 0;
+    transform: scale(0.1);
+    transition: all .6s ease-in;
+    z-index: 100;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#per {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background-color: #E6F1F7;
+    display: flex;
+    font-size: 40px;
+    font-weight: bolder;
+    align-items: center;
+    justify-content: center;
+    margin-top: -90px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+p#grade {
+    text-align: center;
+    font-size: 80px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bolder;
+    color: #333;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+a {
+    width: 100%;
+    margin-top: 50px;
+    text-decoration: none;
+}
+
+button {
+    background-color: rgb(230, 241, 247);
+    padding: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.button {
+    display: inline-block;
+    padding: 20px 5px;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    background-color: rgba(238, 242, 255, 0.1);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    width: 250px;
+    border: 1px solid white;
+  }
+  
+  .button::after,
+  .button::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease;
+    opacity: 0;
+  }
+  
+  .button::after {
+    background-color: rgba(0, 0, 0, 0.06);
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+  
+  .button::before {
+    background-color: rgba(0, 0, 0, 0.06);
+    transform: scaleY(0);
+    transform-origin: bottom;
+}
+  
+.button:hover {
+    background-color: rgba(230, 241, 247, 0.1);
+    font-size: 30px;
+    text-shadow: 0 0 7px rgba(0, 0, 0, 0.8);
+}
+
+.button:hover::after,
+.button:hover::before {
+    transform: scaleX(1) scaleY(1);
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.01);
+  }
+  
+  @keyframes buttonPulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .button:hover {
+    animation: buttonPulse 1s infinite;
+  }
+  
+  .button::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 200px;
+    height: 200px;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    animation: waterAnimation 3s infinite;
+    opacity: 0.5;
+  }
+  
+  @keyframes waterAnimation {
+    0% {
+      transform: scale(1) rotate(0deg);
+    }
+    50% {
+      transform: scale(1.2) rotate(45deg);
+    }
+    100% {
+      transform: scale(1) rotate(0deg);
+    }
+  }
+  
+  .button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 20%, transparent 20.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    animation: wavesAnimation 2s infinite;
+    opacity: 0.3;
+  }
+  
+  @keyframes wavesAnimation {
+    0% {
+      transform: scale(1) rotate(0deg);
+    }
+    50% {
+      transform: scale(1.05) rotate(-45deg);
+    }
+    100% {
+      transform: scale(1) rotate(0deg);
+    }
+  }
+  
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+h1 {
+    font-size: 20px;
+}
+
+.questionsCount {
+    font-size: 14px;
+}
+
+@media screen and (max-width: 768px) {
+    .mcqContainer {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .mcqContainer {
+        width: 95%;
+    }
+
+    #quest {
+        font-size: 20px;
+    }
+
+    .question {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #result {
+        width: 275px;
+    }
+
+    #per {
+        width: 100px;
+        height: 100px;
+        font-size: 35px;
+    }
+}
